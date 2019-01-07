@@ -1,20 +1,23 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-	const Link = sequelize.define('Link', {
+	const Item = sequelize.define('Item', {
 		name: {
 			type: DataTypes.STRING,
 			unique: true
 		},
-		url: DataTypes.STRING,
+		link: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
 		img: DataTypes.STRING
-	}, {});
-	Link.associate = function(models) {
-		Link.belongsTo(models.Section, {
+	});
+	Item.associate = function(models) {
+		Item.belongsTo(models.Category, {
 			onDelete: 'CASCADE',
 			foreignKey: {
 				allowNull: false
 			}
 		});
 	};
-	return Link;
+	return Item;
 };

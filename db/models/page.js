@@ -7,7 +7,13 @@ module.exports = (sequelize, DataTypes) => {
 		},
 	}, {});
 	Page.associate = function(models) {
-		Page.hasMany(models.Section);
+		Page.hasMany(models.Category, {
+			onDelete: 'CASCADE',
+			foreignKey: {
+				allowNull: false
+			}
+		});
+
 	};
 	return Page;
 };

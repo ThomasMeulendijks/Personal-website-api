@@ -4,9 +4,9 @@ module.exports = function(server) {
 	server.get('/pages/:name', function(req, res, next) {
 		models.Page.findOne({
 			include: [{
-				model: models.Section,
+				model: models.Category,
 				include: [{
-					model: models.Link
+					model: models.Item
 				}]
 			}],
 			where: {

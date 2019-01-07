@@ -4,11 +4,14 @@ sendPostRequest(){
 	requesttype="POST"
 	endpoint=$1
 	param=$2
-	url="http://localhost"
+	link="http://localhost"
 	port="8090"
-	curl -X $requesttype -H "Content-Type:application/json" "$url:$port$endpoint" -d "$param"
+	curl -X $requesttype -H "Content-Type:application/json" "$link:$port$endpoint" -d "$param"
 }
 
 sendPostRequest "/pages" '{"name": "Home"}'
-sendPostRequest "/sections" '{"name": "sectionname", "PageId":1}'
-sendPostRequest "/links" '{"name": "link1","url":"iAmAUrl","img":"ImgIsMe","SectionId":1}'
+sendPostRequest "/categories" '{"name": "Cat1", "PageId":1}'
+sendPostRequest "/categories" '{"name": "Cat2", "PageId":1}'
+sendPostRequest "/items" '{"name": "Item1","link":"iAmAlink","img":"ImgIsMe","CategoryId":1}'
+sendPostRequest "/items" '{"name": "Item2","link":"iAmAlink","img":"ImgIsMe","CategoryId":1}'
+sendPostRequest "/items" '{"name": "Item3","link":"iAmAlink","img":"ImgIsMe","CategoryId":2}'
