@@ -1,6 +1,7 @@
 const restify = require('restify');
 const config = require('./config/config');
 const database = require('./db/models');
+const corsMiddleware = require('restify-cors-middleware');
 
 //
 // Initialize server
@@ -14,6 +15,15 @@ const server = restify.createServer({
 //
 // Middleware
 //
+const cors = corsMiddleware({
+	preflightMaxAge: 5, //Optional
+	origins: ['*'],
+	allowHeaders: ['API-Token'],
+	exposeHeaders: ['API-Token-Expiry']
+});
+
+server.pre(cors.preflight);
+server.use(cors.actual);
 
 server.use(restify.plugins.acceptParser(server.acceptable));
 server.use(restify.plugins.queryParser());
