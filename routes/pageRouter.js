@@ -14,6 +14,10 @@ module.exports = function(server) {
 			}
 		}).then(page => {
 			res.send(page);
+		}).catch(err => {
+			res.send(400, {
+				error: err.errors[0].type
+			});
 		});
 		return next();
 	});
@@ -23,6 +27,10 @@ module.exports = function(server) {
 			name: req.body.name
 		}).then(page => {
 			res.send(page);
+		}).catch(err => {
+			res.send(400, {
+				error: err.errors[0].type
+			});
 		});
 		return next();
 	});

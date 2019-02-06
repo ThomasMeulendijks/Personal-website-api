@@ -5,11 +5,12 @@ module.exports = function(server) {
 		models.Category.create({
 			name: req.body.name,
 			PageId: req.body.PageId
-		}).catch(err => {
-			console.error('Error has occured', err.message);
-			res.send(err.message);
 		}).then(category => {
 			res.send(category);
+		}).catch(err => {
+			res.send(400, {
+				error: err.errors[0].type
+			});
 		});
 		return next();
 	});

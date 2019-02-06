@@ -9,6 +9,10 @@ module.exports = function(server) {
 			img: req.body.img,
 		}).then(item => {
 			res.send(item);
+		}).catch(err => {
+			res.send(400, {
+				error: err.errors[0].type
+			});
 		});
 		return next();
 	});
