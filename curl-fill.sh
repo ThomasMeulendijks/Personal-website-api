@@ -10,8 +10,14 @@ sendPostRequest(){
 }
 
 sendPostRequest "/pages" '{"name": "Home"}'
+echo
 sendPostRequest "/categories" '{"name": "Cat1", "PageId":1}'
+echo
 sendPostRequest "/categories" '{"name": "Cat2", "PageId":1}'
+echo
 sendPostRequest "/items" '{"name": "Item1","link":"iAmAlink","img":"ImgIsMe","CategoryId":1}'
+echo
 sendPostRequest "/items" '{"name": "Item2","link":"iAmAlink","img":"ImgIsMe","CategoryId":1}'
+echo
 sendPostRequest "/items" '{"name": "Item3","link":"iAmAlink","img":"ImgIsMe","CategoryId":2}'
+echo

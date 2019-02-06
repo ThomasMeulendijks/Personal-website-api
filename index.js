@@ -33,7 +33,7 @@ server.use(restify.plugins.bodyParser());
 // Start server, connect to db and require routes
 //
 
-server.listen(8090, () => {
+server.listen(8080, () => {
 	database.sequelize.authenticate()
 		.then(() => {
 			console.log('Connection has been established successfully.');
